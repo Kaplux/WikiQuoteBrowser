@@ -1,5 +1,9 @@
 package fr.wikiQuoteBrowser;
 
+import java.io.IOException;
+
+import org.apache.http.client.ClientProtocolException;
+
 import fr.kaplux.R;
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,12 +23,19 @@ public class HelloAndroidActivity extends Activity {
         public void onClick(View v) {
         	WikiQuoteAccess wiki=new WikiQuoteAccess("http://en.wikiquote.org/w/api.php");
         	TextView searchCriteria= (TextView)findViewById(R.id.searchCriteria);
-			String result=wiki.searchQuote(searchCriteria.getText().toString());
+			String[] result;
+			try {
+				result = wiki.searchQuote(searchCriteria.getText().toString());
+			
 			WebView searchResult= (WebView)findViewById(R.id.searchResult);
-			String html = "<html><body>some html here</body></html>"; 
-			searchResult.loadData(result, "text/html", "UTF-8");
+			
+			searchResult.loadData(result[0], "text/html", "UTF-8");
 
-
+			} catch (ClientProtocolException e) {
+				Log.e(TAG, e.getMessage());
+			} catch (IOException e) {
+				Log.e(TAG, e.getMessage());
+			}
 			
         }
     };
