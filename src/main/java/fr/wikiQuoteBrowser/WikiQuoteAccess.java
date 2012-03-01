@@ -24,8 +24,8 @@ public class WikiQuoteAccess {
 
 	}
 
-	public List<String> searchQuote(String searchSring) throws ClientProtocolException, IOException {
-		List<String> result = new ArrayList<String>();
+	public String[] searchQuote(String searchSring) throws ClientProtocolException, IOException {
+		String[] result =new String[0];
 			HttpClient hc = new DefaultHttpClient();
 			HttpGet get = new HttpGet(baseUrl + "?action=opensearch&search="
 					+ searchSring + "&namespace=0&format=json");
@@ -38,7 +38,7 @@ public class WikiQuoteAccess {
 				
 				Object[] o = mapper.readValue(jacksonResult,
 						Object[].class);
-				result = (List<String>) o[1];
+				result = ((ArrayList<String>) o[1]).toArray(result);
 
 			}
 		

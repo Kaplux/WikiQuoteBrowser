@@ -1,20 +1,20 @@
 package fr.wikiQuoteBrowser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
 
-import fr.kaplux.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
+import fr.kaplux.R;
 
 public class SearchActivity extends Activity {
 
@@ -25,16 +25,15 @@ public class SearchActivity extends Activity {
         public void onClick(View v) {
         	WikiQuoteAccess wiki=new WikiQuoteAccess("http://en.wikiquote.org/w/api.php");
         	TextView searchCriteria= (TextView)findViewById(R.id.searchCriteria);
-        	List<String> result;
+        	String[] result;
 			try {
 				result = wiki.searchQuote(searchCriteria.getText().toString());
-			
-		//	WebView searchResult= (WebView)findViewById(R.id.searchResult);
-			
-		//	searchResult.loadData(result.get(0), "text/html", "UTF-8");
-				ListView searchResultsView= (ListView) findViewById(R.id.searchResults);
-			
-
+				Intent intent =new Intent(getApplicationContext(),SearchResultActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putStringArray("searchResults",  result);
+				intent.putExtras(bundle);
+				startActivity(intent);
+		
 			} catch (ClientProtocolException e) {
 				Log.e(TAG, e.getMessage());
 			} catch (IOException e) {

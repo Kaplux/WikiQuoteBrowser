@@ -13,7 +13,7 @@ public class WikiQuoteAccessTest {
 	public void test() throws ClientProtocolException, IOException {
 		WikiQuoteAccess wiki=new WikiQuoteAccess("http://en.wikiquote.org/w/api.php");
     	String searchCriteria= "cleese";
-    	List<String> result;
+    	String[] result;
 		result = wiki.searchQuote(searchCriteria);
 	}
 
