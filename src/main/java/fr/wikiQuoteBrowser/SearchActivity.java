@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class HelloAndroidActivity extends Activity {
+public class SearchActivity extends Activity {
 
     private static String TAG = "testAndroid";
     
