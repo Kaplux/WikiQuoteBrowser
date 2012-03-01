@@ -23,10 +23,10 @@
             android:text="Search" />
     </LinearLayout>
 
-    <android.webkit.WebView
-        android:id="@+id/searchResult"
+    <ListView
+        android:id="@+id/searchResults"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-    </android.webkit.WebView>
+        android:layout_height="wrap_content" >
+    </ListView>
 
 </LinearLayout>

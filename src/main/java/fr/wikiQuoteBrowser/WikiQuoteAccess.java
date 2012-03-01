@@ -1,7 +1,9 @@
 package fr.wikiQuoteBrowser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -22,8 +24,8 @@ public class WikiQuoteAccess {
 
 	}
 
-	public String[] searchQuote(String searchSring) throws ClientProtocolException, IOException {
-		String[] result = null;
+	public List<String> searchQuote(String searchSring) throws ClientProtocolException, IOException {
+		List<String> result = new ArrayList<String>();
 			HttpClient hc = new DefaultHttpClient();
 			HttpGet get = new HttpGet(baseUrl + "?action=opensearch&search="
 					+ searchSring + "&namespace=0&format=json");
@@ -33,11 +35,10 @@ public class WikiQuoteAccess {
 			if (rp.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				String jacksonResult = EntityUtils.toString(rp.getEntity());
 				ObjectMapper mapper = new ObjectMapper();
-				TypeReference<HashMap<String, String[]>> typeRef = new TypeReference<HashMap<String, String[]>>() {
-				};
-				HashMap<String, String[]> o = mapper.readValue(jacksonResult,
-						typeRef);
-				result = o.get(searchSring);
+				
+				Object[] o = mapper.readValue(jacksonResult,
+						Object[].class);
+				result = (List<String>) o[1];
 
 			}
 		
