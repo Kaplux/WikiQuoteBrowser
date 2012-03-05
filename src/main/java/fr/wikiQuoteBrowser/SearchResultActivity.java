@@ -1,6 +1,7 @@
 package fr.wikiQuoteBrowser;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,9 +33,12 @@ public class SearchResultActivity extends ListActivity {
     	  lv.setOnItemClickListener(new OnItemClickListener() {
     	    public void onItemClick(AdapterView<?> parent, View view,
     	        int position, long id) {
-    	      // When clicked, show a toast with the TextView text
-    	      Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
-    	          Toast.LENGTH_SHORT).show();
+    	    	Intent intent =new Intent(getApplicationContext(),DisplayQuoteActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putCharSequence("selectedPage",  ((TextView) view).getText());
+				intent.putExtras(bundle);
+				startActivity(intent);
+    	  
     	    }
     	  });
      

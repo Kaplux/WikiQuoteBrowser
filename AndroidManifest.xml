@@ -12,6 +12,7 @@
       </intent-filter>
     </activity>
     <activity android:name="fr.wikiQuoteBrowser.SearchResultActivity"></activity>
+    <activity android:name="fr.wikiQuoteBrowser.DisplayQuoteActivity"></activity>
     
   </application>
 

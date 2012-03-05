@@ -16,5 +16,14 @@ public class WikiQuoteAccessTest {
     	String[] result;
 		result = wiki.searchQuote(searchCriteria);
 	}
+	
+	@Test
+	public void test2() throws ClientProtocolException, IOException {
+		WikiQuoteAccess wiki=new WikiQuoteAccess("http://en.wikiquote.org/w/api.php");
+    	String searchCriteria= "Main%20Page";
+    	String result;
+		result = wiki.getQuotePage(searchCriteria);
+	}
+
 
 }

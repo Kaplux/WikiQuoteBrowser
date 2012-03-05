@@ -54,7 +54,7 @@ public class SearchActivity extends Activity {
         super.onCreate(savedInstanceState);
 		Log.i(TAG, "onCreate");
 		
-        setContentView(R.layout.main);
+        setContentView(R.layout.search_layout);
         // Capture our button from layout
 	    Button button = (Button)findViewById(R.id.searchButton);
 	    // Register the onClick listener with the implementation above
