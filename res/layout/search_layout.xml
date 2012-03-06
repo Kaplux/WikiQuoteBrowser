@@ -12,7 +12,8 @@
         <AutoCompleteTextView
             android:id="@+id/searchCriteria"
             android:layout_width="234dp"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:singleLine="true"
             android:text="" />
 
         <Button

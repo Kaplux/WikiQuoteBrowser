@@ -1,16 +1,9 @@
 package fr.wikiQuoteBrowser;
 
-import java.io.IOException;
-import java.net.URLEncoder;
-
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
-import android.widget.ArrayAdapter;
 import fr.kaplux.R;
 
 public class DisplayQuoteActivity extends Activity {
@@ -32,12 +25,10 @@ public class DisplayQuoteActivity extends Activity {
         setContentView(R.layout.display_quote_layout);
         WebView quoteDisplayView=(WebView)findViewById(R.id.quoteDisplay);
         String pageName=this.getIntent().getExtras().getString("selectedPage");
-        WikiQuoteAccess wiki=new WikiQuoteAccess("http://en.wikiquote.org/w/api.php");
-        
-       
+     
 		//	quoteDisplayView.loadData(wiki.getQuotePage(pageName), "text/html", null);
-			quoteDisplayView.loadUrl("http://en.wikiquote.org/wiki/"+pageName.replaceAll(" ", "_"));
-		
+	//		quoteDisplayView.loadUrl("http://en.wikiquote.org/wiki/"+pageName.replaceAll(" ", "_"));
+			quoteDisplayView.loadUrl("http://en.wikiquote.org/w/index.php?action=render&title="+pageName.replaceAll(" ", "_"));
 		
       
     }

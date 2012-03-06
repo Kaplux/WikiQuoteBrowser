@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import fr.kaplux.R;
 
 public class SearchActivity extends Activity {
@@ -28,11 +29,22 @@ public class SearchActivity extends Activity {
         	String[] result;
 			try {
 				result = wiki.searchQuote(searchCriteria.getText().toString());
-				Intent intent =new Intent(getApplicationContext(),SearchResultActivity.class);
-				Bundle bundle = new Bundle();
-				bundle.putStringArray("searchResults",  result);
-				intent.putExtras(bundle);
-				startActivity(intent);
+				if (result.length==0){
+					Toast.makeText(getApplicationContext(),"No result found", Toast.LENGTH_SHORT).show();
+				}
+				else if (result.length==1){
+					Intent intent =new Intent(getApplicationContext(),DisplayQuoteActivity.class);
+					Bundle bundle = new Bundle();
+					bundle.putCharSequence("selectedPage",  result[0]);
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}else{
+					Intent intent =new Intent(getApplicationContext(),SearchResultActivity.class);
+					Bundle bundle = new Bundle();
+					bundle.putStringArray("searchResults",  result);
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}
 		
 			} catch (ClientProtocolException e) {
 				Log.e(TAG, e.getMessage());
