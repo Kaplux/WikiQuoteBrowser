@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
-import fr.kaplux.R;
+import fr.wikiquotebrowser.R;
 
-public class DisplayQuoteActivity extends Activity {
+public class DisplayQuotePageActivity extends Activity {
 
     private static String TAG = "testAndroid";
     
@@ -26,9 +26,8 @@ public class DisplayQuoteActivity extends Activity {
         WebView quoteDisplayView=(WebView)findViewById(R.id.quoteDisplay);
         String pageName=this.getIntent().getExtras().getString("selectedPage");
      
-		//	quoteDisplayView.loadData(wiki.getQuotePage(pageName), "text/html", null);
-	//		quoteDisplayView.loadUrl("http://en.wikiquote.org/wiki/"+pageName.replaceAll(" ", "_"));
-			quoteDisplayView.loadUrl("http://en.wikiquote.org/w/index.php?action=render&title="+pageName.replaceAll(" ", "_"));
+	
+		quoteDisplayView.loadUrl("http://en.wikiquote.org/w/index.php?action=render&title="+pageName.replaceAll(" ", "_"));
 		
       
     }

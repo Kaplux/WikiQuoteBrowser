@@ -9,8 +9,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import fr.kaplux.R;
+import fr.wikiquotebrowser.R;
 
 public class SearchResultActivity extends ListActivity {
 
@@ -33,7 +32,7 @@ public class SearchResultActivity extends ListActivity {
     	  lv.setOnItemClickListener(new OnItemClickListener() {
     	    public void onItemClick(AdapterView<?> parent, View view,
     	        int position, long id) {
-    	    	Intent intent =new Intent(getApplicationContext(),DisplayQuoteActivity.class);
+    	    	Intent intent =new Intent(getApplicationContext(),DisplayQuotePageActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putCharSequence("selectedPage",  ((TextView) view).getText());
 				intent.putExtras(bundle);
