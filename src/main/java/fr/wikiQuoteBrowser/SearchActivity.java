@@ -23,7 +23,7 @@ public class SearchActivity extends Activity {
 	private static String TAG = "wikiQuoteBrowser";
 
 	final Activity searchActivity = this;
-
+	
 	private OnClickListener searchListener = new OnClickListener() {
 		public void onClick(View v) {
 
@@ -42,7 +42,7 @@ public class SearchActivity extends Activity {
 				}
 
 				protected void onPostExecute(String[] result) {
-					progressDialog.hide();
+					progressDialog.dismiss();
 					handleSearchResult(result);
 				}
 
@@ -75,7 +75,7 @@ public class SearchActivity extends Activity {
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {
-									dialog.cancel();
+									dialog.dismiss();
 								}
 							});
 			builder.create().show();

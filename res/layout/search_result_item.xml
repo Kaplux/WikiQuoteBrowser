@@ -3,7 +3,6 @@
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="TextView"
-        android:textSize="15pt" >
-
+        android:text=""
+        android:textSize="12pt" >
 </TextView>
